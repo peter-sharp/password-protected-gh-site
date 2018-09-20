@@ -23,13 +23,13 @@
     function checkPw(ev) {
       ev.preventDefault()
      let password = this.password
-      ajax('GET', `/${password}/.correct`)
+      ajax('GET', `./${password}/.correct`)
       .then(loadPage)
       
       function loadPage(ev){
        if(ev.target.status !== 404) {
          console.log(ev.target.responseText)
-         location.assign(`/${password}/`)
+         location.assign(`./${password}/`)
        }
       }
     }
