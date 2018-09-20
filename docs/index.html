@@ -1,0 +1,44 @@
+<!Doctype html>
+<html>
+ <head>
+  <title>Public page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+ <body>
+  <header>
+    <h1>Private page</h1>
+  </header>
+  <main>
+    <form class="unlock-form">
+      <label>Password</label>
+      <input name="password" type="password"/>
+      <button type="submit">unlock</button>
+    </form>
+  </main>
+  <script>
+    let form = document.querySelector('form')
+    
+    form.addEventListener('submit', checkPw)
+    
+    function checkPw(ev) {
+      ev.preventDefault()
+      ajax('GET', `/${this.password}/.correct`)
+      .then(loadPage)
+      
+      function loadPage(){
+       location.open(`/${this.password}/`) 
+      }
+    }
+    
+    function ajax(method, url) {
+      return new Promise(function (resolve, reject) {
+        let req = new XMLHttpRequest()
+        req.addEventListener('load', resolve)
+        req.addEventListener('error', reject)
+        req.open(method, url)
+        req.send()
+      })
+    }
+  </script>
+ </body>
+</html>
