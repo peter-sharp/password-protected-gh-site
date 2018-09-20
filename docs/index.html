@@ -27,8 +27,10 @@
       .then(loadPage)
       
       function loadPage(ev){
-       console.log(ev.textContent)
-       location.assign(`/${password}/`) 
+       if(ev.target.status !== 404) {
+         console.log(ev.target.responseText)
+         location.assign(`/${password}/`)
+       }
       }
     }
     
