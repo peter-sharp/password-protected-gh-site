@@ -22,7 +22,7 @@
     
     function checkPw(ev) {
       ev.preventDefault()
-     let password = this.password
+     let password = this.password.value
       ajax('GET', `./${password}/.correct`)
       .then(loadPage)
       
