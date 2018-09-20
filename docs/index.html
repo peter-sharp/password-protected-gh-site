@@ -22,12 +22,13 @@
     
     function checkPw(ev) {
       ev.preventDefault()
-      ajax('GET', `/${this.password}/.correct`)
+     let password = this.password
+      ajax('GET', `/${password}/.correct`)
       .then(loadPage)
       
       function loadPage(ev){
        console.log(ev.textContent)
-       location.assign(`/${this.password}/`) 
+       location.assign(`/${password}/`) 
       }
     }
     
